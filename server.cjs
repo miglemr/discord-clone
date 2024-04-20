@@ -37,7 +37,7 @@ io.use(async (socket, next) => {
       socket.userId = session.userId
       socket.username = session.username
 
-      next()
+      return next()
     }
   }
 
@@ -77,6 +77,7 @@ io.on('connection', socket => {
 
   socket.emit('channels', channels)
   socket.emit('users', sessions.getAllUsers())
+  socket.broadcast.emit('users', sessions.getAllUsers())
 
   socket.on('user:leave', () => {
     socket.in(WELCOME_CHANNEL).emit('user:leave', {
@@ -89,12 +90,12 @@ io.on('connection', socket => {
     socket.disconnect()
   })
 
-  socket.on('message:channel:send', (channel, message) => {
+  socket.on('message:channel:send', (channel, timestamp, content) => {
     const registeredChannel = channels.find(it => it.name === channel)
 
     if (!registeredChannel) return
 
-    const builtMessage = buildMessage(currentSession, message)
+    const builtMessage = buildMessage(currentSession, timestamp, content)
 
     registeredChannel.messages.push(builtMessage)
 

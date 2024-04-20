@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+body {
+  background-color: #2e3136 !important;
+  color: #fff !important;
+  font-family: 'Roboto' !important;
+}
+
+#root {
+  width: 100%;
+}
+
+h6 {
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+}
+
+ul {
+  list-style: none;
+}
+
+.scrollbar {
+  overflow-y: scroll;
+  scrollbar-color: #2e3136 #36393e;
+  scrollbar-width: thin;
+}
+
+.active {
+  background-color: #121416;
+  color: #fff;
+}
+
+.offline {
+  filter: saturate(0);
+}
