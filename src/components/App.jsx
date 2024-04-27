@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Setup from '@/components/Setup'
 import Channels from '@/components/Channels'
 import Users from '@/components/Users'
-import Chat from '@/components/Chat/Chat'
+import Chat from '@/components/Chat'
 import Buttons from '@/components/Buttons'
 
 import { socket } from '@/libs/socket'
