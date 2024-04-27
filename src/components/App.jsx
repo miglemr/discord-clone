@@ -36,8 +36,6 @@ function App() {
 
     socket.auth = {
       sessionId: session.sessionId,
-      userId: session.userId,
-      username: session.username,
     }
 
     socket.connect()

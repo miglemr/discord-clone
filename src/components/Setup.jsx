@@ -8,9 +8,7 @@ function Setup() {
 
     if (session) {
       socket.auth = {
-        userId: session.userId,
         sessionId: session.sessionId,
-        username: e.target.name.value,
       }
     } else {
       socket.auth = {
