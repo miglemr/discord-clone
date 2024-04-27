@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 
 import Setup from '@/components/Setup'
-import Channels from './Channels'
+import Channels from '@/components/Channels'
 import Users from '@/components/Users'
 import Chat from '@/components/Chat/Chat'
+import Buttons from '@/components/Buttons'
 
 import { socket } from '@/libs/socket'
 import { WELCOME_CHANNEL } from '@/libs/constants'
@@ -14,20 +15,6 @@ function App() {
   const [messages, setMessages] = useState([])
   const [users, setUsers] = useState([])
   const [currentChannel, setCurrentChannel] = useState(WELCOME_CHANNEL)
-
-  function handleDisconnect() {
-    socket.disconnect()
-
-    setIsConnected(false)
-  }
-
-  function handleLeave() {
-    socket.emit('user:leave')
-
-    sessionStorage.clear('session')
-
-    setIsConnected(false)
-  }
 
   useEffect(() => {
     const session = JSON.parse(sessionStorage.getItem('session'))
@@ -142,14 +129,7 @@ function App() {
             currentChannel={currentChannel}
             onChannelClick={setCurrentChannel}
           />
-          <div className="mb-4">
-            <button className="btn btn-sm btn-outline-light me-1" onClick={handleDisconnect}>
-              Disconnect
-            </button>
-            <button className="btn btn-sm btn-outline-light" onClick={handleLeave}>
-              Leave
-            </button>
-          </div>
+          <Buttons onDisconnect={() => setIsConnected(false)} />
         </div>
         <Chat messages={messages} currentChannel={currentChannel} />
         <Users users={users} />
