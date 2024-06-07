@@ -4,6 +4,9 @@
 
 Mini Discord Clone is a live chat app.
 
+![image](https://github.com/miglemr/discord-clone/assets/113340648/c4b5b5de-6d3f-4988-a37b-6cbd3b367621)
+
+
 ## Built With
 
 <div align="left">
